@@ -8,7 +8,7 @@
 
 3. [x] Move File Format — Design the move JSON format for files in `tables/{id}/moves/` directory (e.g., `0001-white-{sha}.json`). Include move notation, player, timestamp. `S`
 
-4. [ ] Move Validation Engine — Implement core backgammon rules: legal piece movement, hitting blots, bearing off conditions, and blocked point detection. Reject invalid moves with clear error messages. `M`
+4. [x] Move Validation Engine — Implement core backgammon rules: legal piece movement, hitting blots, bearing off conditions, and blocked point detection. Reject invalid moves with clear error messages. `M`
 
 5. [ ] Dice System — Server-side dice rolling in GitHub Actions, committed as part of `state.json`. Rolls happen after move validation, ensuring no manipulation possible. `S`
 
