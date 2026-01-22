@@ -1,0 +1,12 @@
+{
+  "player": "black",
+  "moves": [
+    { "from": 12, "to": 16, "die": 4 },
+    { "from": 16, "to": 18, "die": 2 }
+  ],
+  "timestamp": "2025-01-21T14:32:15Z",
+  "expectedState": "1234567890abcdef",
+  "diceRoll": [4, 2],
+  "comment": "Running for safety!",
+  "commitSha": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0"
+}

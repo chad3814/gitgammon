@@ -1,0 +1,12 @@
+{
+  "player": "white",
+  "moves": [
+    { "from": 5, "to": 2, "die": 3 },
+    { "from": 7, "to": 2, "die": 5 }
+  ],
+  "timestamp": "2025-01-21T12:01:00Z",
+  "expectedState": "a3b4c5d6e7f89a0b",
+  "diceRoll": [3, 5],
+  "comment": null,
+  "commitSha": null
+}

@@ -6,7 +6,7 @@
 
 2. [x] Board Rendering — Build a static HTML/CSS/JS page that reads `state.json` and renders an interactive backgammon board on GitHub Pages. Support for all 24 points, bar, and bear-off areas using SVG. `M`
 
-3. [ ] Move File Format — Design the move JSON format for files in `tables/{id}/moves/` directory (e.g., `0001-white-{sha}.json`). Include move notation, player, timestamp. `S`
+3. [x] Move File Format — Design the move JSON format for files in `tables/{id}/moves/` directory (e.g., `0001-white-{sha}.json`). Include move notation, player, timestamp. `S`
 
 4. [ ] Move Validation Engine — Implement core backgammon rules: legal piece movement, hitting blots, bearing off conditions, and blocked point detection. Reject invalid moves with clear error messages. `M`
 
