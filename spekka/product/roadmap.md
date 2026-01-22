@@ -12,7 +12,7 @@
 
 5. [x] Dice System — Server-side dice rolling in GitHub Actions, committed as part of `state.json`. Rolls happen after move validation, ensuring no manipulation possible. `S`
 
-6. [ ] GitHub Action Workflow — Build the Action that triggers on push, validates the move against `state.json`, applies valid moves, rolls dice, updates state, or reverts invalid commits with error in state. `L`
+6. [x] GitHub Action Workflow — Build the Action that triggers on push, validates the move against `state.json`, applies valid moves, rolls dice, updates state, or reverts invalid commits with error in state. `L`
 
 7. [ ] OAuth Device Flow — Implement authentication using GitHub's Device Flow: request device code, poll for token, store access token locally. Only Client ID needed—no secrets. `M`
 

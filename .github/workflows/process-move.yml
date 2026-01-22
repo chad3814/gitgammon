@@ -1,0 +1,53 @@
+name: Process GitGammon Move
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'tables/*/moves/*.json'
+
+concurrency:
+  group: gitgammon-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  process-move:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Skip bot commits
+        if: github.actor == 'github-actions[bot]'
+        run: |
+          echo "Skipping workflow - commit made by github-actions[bot]"
+          exit 0
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Process move
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+        run: node action/index.js

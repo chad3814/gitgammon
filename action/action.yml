@@ -1,0 +1,25 @@
+name: 'GitGammon Move Processor'
+description: 'Process backgammon moves submitted via git commits'
+author: 'GitGammon'
+
+inputs:
+  github-token:
+    description: 'GitHub token for committing changes'
+    required: true
+    default: ${{ github.token }}
+
+outputs:
+  success:
+    description: 'Whether the move was processed successfully'
+  error:
+    description: 'Error message if processing failed'
+  winner:
+    description: 'Winner of the game if game completed'
+
+runs:
+  using: 'node20'
+  main: 'index.js'
+
+branding:
+  icon: 'play'
+  color: 'purple'
