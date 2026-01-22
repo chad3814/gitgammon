@@ -31,3 +31,6 @@ npm-debug.log*
 tmp/
 temp/
 *.tmp
+
+# Playwright MCP browser data
+.playwright-mcp/

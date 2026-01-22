@@ -1,0 +1,29 @@
+{
+  "turn": 1,
+  "activePlayer": "white",
+  "dice": [3, 5],
+  "diceUsed": [],
+  "board": [
+    2, 0, 0, 0, 0, -5,
+    0, -3, 0, 0, 0, 5,
+    -5, 0, 0, 0, 3, 0,
+    5, 0, 0, 0, 0, -2
+  ],
+  "bar": { "white": 0, "black": 0 },
+  "home": { "white": 0, "black": 0 },
+  "lastMove": null,
+  "status": "playing",
+  "winner": null,
+  "players": {
+    "white": "alice",
+    "black": "bob"
+  },
+  "messages": [
+    {
+      "type": "info",
+      "text": "Game started. White to move.",
+      "timestamp": "2025-01-21T12:00:00Z"
+    }
+  ],
+  "updatedAt": "2025-01-21T12:00:00Z"
+}

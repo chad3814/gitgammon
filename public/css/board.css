@@ -1,0 +1,238 @@
+/**
+ * GitGammon Board Styles
+ * CSS custom properties and board rendering styles
+ */
+
+/* ============================================
+   CSS Custom Properties (Theming Foundation)
+   ============================================ */
+:root {
+  /* Board colors */
+  --board-bg: #8B4513;
+  --board-border: #5D3A1A;
+  --point-light: #D2B48C;
+  --point-dark: #8B6914;
+
+  /* Piece colors */
+  --piece-white: #FFFAF0;
+  --piece-white-stroke: #333;
+  --piece-black: #2F2F2F;
+  --piece-black-stroke: #000;
+
+  /* UI colors for badges and overlays */
+  --badge-light: #FFFAF0;
+  --badge-dark: #2F2F2F;
+  --text-primary: #333;
+  --bg-primary: #f5f5f5;
+  --overlay-bg: rgba(0, 0, 0, 0.85);
+
+  /* Bar and home area colors */
+  --bar-color: #5D3A1A;
+  --home-white-bg: rgba(255, 250, 240, 0.2);
+  --home-black-bg: rgba(47, 47, 47, 0.2);
+}
+
+/* ============================================
+   Global Reset and Base Styles
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* ============================================
+   Board Container
+   ============================================ */
+#board-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--board-border);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+#board-container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* ============================================
+   Board Flip State
+   ============================================ */
+#board-container.flipped svg {
+  transform: rotate(180deg);
+}
+
+/* Counter-rotation for count badges when board is flipped */
+#board-container.flipped .count-badge {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   Piece Styling via CSS
+   ============================================ */
+.piece {
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.piece-white {
+  fill: var(--piece-white);
+  stroke: var(--piece-white-stroke);
+  stroke-width: 1.5;
+}
+
+.piece-black {
+  fill: var(--piece-black);
+  stroke: var(--piece-black-stroke);
+  stroke-width: 1.5;
+}
+
+/* ============================================
+   Count Badge Styling
+   ============================================ */
+.count-badge {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.count-badge-light {
+  fill: var(--badge-light);
+}
+
+.count-badge-dark {
+  fill: var(--badge-dark);
+}
+
+/* ============================================
+   Home Area Count Styling
+   ============================================ */
+.home-count {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+/* ============================================
+   Rotation Prompt Overlay (Portrait Mode)
+   ============================================ */
+.rotation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-bg);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.rotation-message {
+  text-align: center;
+  color: white;
+  padding: 24px;
+}
+
+.rotation-icon {
+  margin-bottom: 16px;
+  color: white;
+}
+
+.rotation-message p {
+  font-size: 18px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
+
+/* Portrait orientation: show rotation prompt */
+@media (orientation: portrait) {
+  .rotation-overlay {
+    display: flex;
+  }
+
+  #board-container {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+/* Landscape orientation: hide rotation prompt */
+@media (orientation: landscape) {
+  .rotation-overlay {
+    display: none;
+  }
+
+  #board-container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Mobile optimization for iPhone SE landscape (568px) */
+@media screen and (max-width: 600px) and (orientation: landscape) {
+  main {
+    padding: 8px;
+  }
+
+  #board-container {
+    max-width: 100%;
+    padding: 2px;
+  }
+
+  .count-badge {
+    font-size: 12px;
+  }
+
+  .home-count {
+    font-size: 14px;
+  }
+}
+
+/* Touch-friendly sizing documentation
+ * Future interactive controls should maintain minimum 44x44px touch targets
+ * per Apple Human Interface Guidelines and WCAG 2.1 AAA
+ *
+ * Recommended touch target sizes:
+ * - Buttons: min 44px height
+ * - Interactive SVG elements: min 44px diameter/side
+ * - Spacing between targets: min 8px
+ */

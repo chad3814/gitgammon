@@ -4,7 +4,7 @@
 
 1. [x] Game State Schema — Define the JSON schema for `state.json` matching the architecture spec: turn number, activePlayer, dice, diceUsed, board array, bar, home, lastMove, status, updatedAt. `S`
 
-2. [ ] Board Rendering — Build a static HTML/CSS/JS page that reads `state.json` and renders an interactive backgammon board on GitHub Pages. Support for all 24 points, bar, and bear-off areas using SVG. `M`
+2. [x] Board Rendering — Build a static HTML/CSS/JS page that reads `state.json` and renders an interactive backgammon board on GitHub Pages. Support for all 24 points, bar, and bear-off areas using SVG. `M`
 
 3. [ ] Move File Format — Design the move JSON format for files in `tables/{id}/moves/` directory (e.g., `0001-white-{sha}.json`). Include move notation, player, timestamp. `S`
 
@@ -58,7 +58,7 @@
 
 26. [ ] Game Export — Export completed games in standard backgammon notation formats (e.g., .mat files) for external analysis tools. `S`
 
-27. [ ] Mobile-Responsive Board — Ensure the board renders well on mobile for players checking games on the go. `M`
+27. [x] Mobile-Responsive Board — Ensure the board renders well on mobile for players checking games on the go. `M`
 
 > Notes
 > - Items are ordered by technical dependencies and incremental value delivery
