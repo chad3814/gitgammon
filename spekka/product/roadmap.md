@@ -10,7 +10,7 @@
 
 4. [x] Move Validation Engine — Implement core backgammon rules: legal piece movement, hitting blots, bearing off conditions, and blocked point detection. Reject invalid moves with clear error messages. `M`
 
-5. [ ] Dice System — Server-side dice rolling in GitHub Actions, committed as part of `state.json`. Rolls happen after move validation, ensuring no manipulation possible. `S`
+5. [x] Dice System — Server-side dice rolling in GitHub Actions, committed as part of `state.json`. Rolls happen after move validation, ensuring no manipulation possible. `S`
 
 6. [ ] GitHub Action Workflow — Build the Action that triggers on push, validates the move against `state.json`, applies valid moves, rolls dice, updates state, or reverts invalid commits with error in state. `L`
 
