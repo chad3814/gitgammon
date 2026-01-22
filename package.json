@@ -1,0 +1,24 @@
+{
+  "name": "gitgammon",
+  "version": "0.1.0",
+  "description": "Backgammon played on GitHub Pages through commits",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src tests",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "vitest": "^2.1.8"
+  },
+  "keywords": [
+    "backgammon",
+    "github",
+    "game"
+  ],
+  "license": "MIT"
+}

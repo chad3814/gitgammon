@@ -1,0 +1,38 @@
+{
+  "turn": 47,
+  "activePlayer": "white",
+  "dice": [6, 4],
+  "diceUsed": [6, 4],
+  "board": [
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0,
+    -3, -4, -5, -3, 0, 0
+  ],
+  "bar": { "white": 0, "black": 0 },
+  "home": { "white": 15, "black": 0 },
+  "lastMove": {
+    "sequence": 47,
+    "player": "white",
+    "file": "0047-white-f8e2d1.json"
+  },
+  "status": "completed",
+  "winner": "white",
+  "players": {
+    "white": "alice",
+    "black": "bob"
+  },
+  "messages": [
+    {
+      "type": "info",
+      "text": "Game started. White to move.",
+      "timestamp": "2025-01-21T12:00:00Z"
+    },
+    {
+      "type": "info",
+      "text": "White wins the game!",
+      "timestamp": "2025-01-21T14:23:45Z"
+    }
+  ],
+  "updatedAt": "2025-01-21T14:23:45Z"
+}

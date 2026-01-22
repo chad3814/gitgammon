@@ -1,0 +1,38 @@
+{
+  "turn": 12,
+  "activePlayer": "black",
+  "dice": [4, 2],
+  "diceUsed": [],
+  "board": [
+    0, 0, 2, 0, 0, -4,
+    0, -2, 0, 0, 1, 4,
+    -4, 0, 0, 1, 2, 0,
+    4, 0, 0, -1, 0, 0
+  ],
+  "bar": { "white": 1, "black": 0 },
+  "home": { "white": 0, "black": 4 },
+  "lastMove": {
+    "sequence": 11,
+    "player": "white",
+    "file": "0011-white-a3f2e1.json"
+  },
+  "status": "playing",
+  "winner": null,
+  "players": {
+    "white": "alice",
+    "black": "bob"
+  },
+  "messages": [
+    {
+      "type": "info",
+      "text": "Game started. White to move.",
+      "timestamp": "2025-01-21T12:00:00Z"
+    },
+    {
+      "type": "info",
+      "text": "White piece hit on point 21.",
+      "timestamp": "2025-01-21T12:15:32Z"
+    }
+  ],
+  "updatedAt": "2025-01-21T12:15:32Z"
+}
