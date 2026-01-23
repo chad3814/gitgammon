@@ -47,12 +47,6 @@
     "white": "alice",
     "black": "bob"
   },
-  "messages": [
-    {
-      "type": "error",
-      "text": "Invalid move rejected: test error",
-      "timestamp": "2026-01-23T16:29:03.695Z"
-    }
-  ],
+  "messages": [],
   "updatedAt": "2025-01-21T12:00:00Z"
 }
