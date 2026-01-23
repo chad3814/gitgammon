@@ -14,7 +14,7 @@
 
 6. [x] GitHub Action Workflow — Build the Action that triggers on push, validates the move against `state.json`, applies valid moves, rolls dice, updates state, or reverts invalid commits with error in state. `L`
 
-7. [ ] OAuth Device Flow — Implement authentication using GitHub's Device Flow: request device code, poll for token, store access token locally. Only Client ID needed—no secrets. `M`
+7. [x] OAuth Device Flow — Implement authentication using GitHub's Device Flow: request device code, poll for token, store access token locally. Only Client ID needed—no secrets. `M`
 
 8. [ ] Table Initialization — Create system for starting new tables: create `tables/{id}/` directory, initial `state.json`, empty `moves/` directory, assign players, first dice roll for starting player. `S`
 

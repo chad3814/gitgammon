@@ -1,0 +1,377 @@
+/**
+ * GitGammon Auth Styles
+ * CSS for OAuth Device Flow authentication UI
+ */
+
+/* ============================================
+   Auth-Specific CSS Custom Properties
+   ============================================ */
+:root {
+  /* Auth colors */
+  --auth-primary: #238636;
+  --auth-primary-hover: #2ea043;
+  --auth-danger: #da3633;
+  --auth-danger-hover: #f85149;
+  --auth-text: #333;
+  --auth-text-secondary: #666;
+  --auth-bg: #ffffff;
+  --auth-border: #d0d7de;
+  --auth-code-bg: #f6f8fa;
+
+  /* Spacing */
+  --auth-spacing-xs: 4px;
+  --auth-spacing-sm: 8px;
+  --auth-spacing-md: 16px;
+  --auth-spacing-lg: 24px;
+  --auth-spacing-xl: 32px;
+
+  /* Border radius */
+  --auth-radius: 6px;
+  --auth-radius-lg: 12px;
+
+  /* Touch target size (WCAG 2.1 AAA) */
+  --auth-touch-target: 44px;
+}
+
+/* ============================================
+   Auth Container
+   ============================================ */
+#auth-container {
+  position: fixed;
+  top: var(--auth-spacing-md);
+  right: var(--auth-spacing-md);
+  z-index: 100;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ============================================
+   Auth Views
+   ============================================ */
+.auth-view {
+  background: var(--auth-bg);
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius-lg);
+  padding: var(--auth-spacing-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  max-width: 320px;
+}
+
+.auth-view.hidden {
+  display: none;
+}
+
+/* ============================================
+   Unauthenticated View
+   ============================================ */
+#auth-unauthenticated {
+  text-align: center;
+}
+
+.auth-description {
+  font-size: 14px;
+  color: var(--auth-text-secondary);
+  margin-bottom: var(--auth-spacing-md);
+  line-height: 1.4;
+}
+
+/* ============================================
+   Device Code View
+   ============================================ */
+#auth-device-code {
+  text-align: center;
+}
+
+.device-code-section {
+  margin-bottom: var(--auth-spacing-lg);
+}
+
+.device-code-label {
+  display: block;
+  font-size: 12px;
+  color: var(--auth-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--auth-spacing-sm);
+}
+
+.device-code-display {
+  display: block;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: var(--auth-code-bg);
+  padding: var(--auth-spacing-md);
+  border-radius: var(--auth-radius);
+  color: var(--auth-text);
+  user-select: all;
+  margin-bottom: var(--auth-spacing-sm);
+}
+
+.verification-section {
+  margin-bottom: var(--auth-spacing-lg);
+}
+
+.verification-label {
+  display: block;
+  font-size: 12px;
+  color: var(--auth-text-secondary);
+  margin-bottom: var(--auth-spacing-xs);
+}
+
+.verification-url {
+  font-size: 14px;
+  color: var(--auth-text);
+  font-weight: 500;
+}
+
+.device-code-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--auth-spacing-sm);
+  margin-bottom: var(--auth-spacing-md);
+}
+
+.polling-status {
+  display: block;
+  font-size: 14px;
+  color: var(--auth-text-secondary);
+  padding: var(--auth-spacing-sm);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ============================================
+   Authenticated View
+   ============================================ */
+#auth-authenticated {
+  display: flex;
+  align-items: center;
+  gap: var(--auth-spacing-md);
+}
+
+#auth-authenticated.hidden {
+  display: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--auth-spacing-sm);
+  flex: 1;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--auth-border);
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--auth-text);
+}
+
+/* ============================================
+   Error View
+   ============================================ */
+#auth-error {
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 32px;
+  margin-bottom: var(--auth-spacing-sm);
+}
+
+.error-message {
+  display: block;
+  font-size: 14px;
+  color: var(--auth-danger);
+  margin-bottom: var(--auth-spacing-md);
+  line-height: 1.4;
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+.auth-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--auth-spacing-sm);
+  min-height: var(--auth-touch-target);
+  padding: var(--auth-spacing-sm) var(--auth-spacing-md);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--auth-radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+.auth-btn:focus {
+  outline: 2px solid var(--auth-primary);
+  outline-offset: 2px;
+}
+
+/* Primary Button (Sign In, Open GitHub) */
+.auth-btn-primary {
+  background-color: var(--auth-primary);
+  color: white;
+  border-color: var(--auth-primary);
+}
+
+.auth-btn-primary:hover {
+  background-color: var(--auth-primary-hover);
+  border-color: var(--auth-primary-hover);
+}
+
+/* Secondary Button (Copy, Cancel, Logout) */
+.auth-btn-secondary {
+  background-color: var(--auth-bg);
+  color: var(--auth-text);
+  border-color: var(--auth-border);
+}
+
+.auth-btn-secondary:hover {
+  background-color: var(--auth-code-bg);
+}
+
+/* Danger Button (not used currently, but available) */
+.auth-btn-danger {
+  background-color: var(--auth-danger);
+  color: white;
+  border-color: var(--auth-danger);
+}
+
+.auth-btn-danger:hover {
+  background-color: var(--auth-danger-hover);
+  border-color: var(--auth-danger-hover);
+}
+
+/* Full Width Button */
+.auth-btn-full {
+  width: 100%;
+}
+
+/* Copied State for Copy Button */
+.btn-copy-code.copied {
+  background-color: var(--auth-primary);
+  color: white;
+  border-color: var(--auth-primary);
+}
+
+/* ============================================
+   GitHub Icon
+   ============================================ */
+.github-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   Text Link (for GitHub settings) */
+/* ============================================ */
+.auth-link {
+  font-size: 12px;
+  color: var(--auth-text-secondary);
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+  color: var(--auth-text);
+}
+
+/* ============================================
+   Cancel Link
+   ============================================ */
+.auth-cancel {
+  display: block;
+  font-size: 12px;
+  color: var(--auth-text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: var(--auth-spacing-sm);
+  margin-top: var(--auth-spacing-sm);
+}
+
+.auth-cancel:hover {
+  text-decoration: underline;
+  color: var(--auth-text);
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
+
+/* Mobile: Stack auth container at bottom */
+@media screen and (max-width: 600px) {
+  #auth-container {
+    position: fixed;
+    top: auto;
+    bottom: var(--auth-spacing-md);
+    right: var(--auth-spacing-md);
+    left: var(--auth-spacing-md);
+  }
+
+  .auth-view {
+    max-width: none;
+    min-width: auto;
+  }
+
+  .device-code-display {
+    font-size: 24px;
+  }
+}
+
+/* Landscape mobile: More compact layout */
+@media screen and (max-width: 600px) and (orientation: landscape) {
+  #auth-container {
+    bottom: var(--auth-spacing-sm);
+    right: var(--auth-spacing-sm);
+    left: auto;
+    max-width: 280px;
+  }
+
+  .auth-view {
+    padding: var(--auth-spacing-sm);
+  }
+
+  .device-code-display {
+    font-size: 20px;
+    padding: var(--auth-spacing-sm);
+  }
+
+  .auth-btn {
+    min-height: 36px;
+    padding: var(--auth-spacing-xs) var(--auth-spacing-sm);
+    font-size: 13px;
+  }
+}
+
+/* Portrait orientation: hide auth during rotation prompt */
+@media (orientation: portrait) {
+  #auth-container {
+    display: none;
+  }
+}
+
+/* Large screens: Fixed position top-right */
+@media screen and (min-width: 1024px) {
+  #auth-container {
+    top: var(--auth-spacing-lg);
+    right: var(--auth-spacing-lg);
+  }
+}
