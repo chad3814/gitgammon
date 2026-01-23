@@ -50,8 +50,8 @@
   "messages": [
     {
       "type": "error",
-      "text": "Invalid move rejected: Invalid move: wrong turn",
-      "timestamp": "2026-01-23T16:26:23.617Z"
+      "text": "Invalid move rejected: wrong turn",
+      "timestamp": "2026-01-23T16:26:23.847Z"
     }
   ],
   "updatedAt": "2025-01-21T12:00:00Z"
