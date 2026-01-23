@@ -15,6 +15,15 @@
  */
 
 /**
+ * Win type indicator
+ * Only populated when status === 'completed'
+ * - single: opponent has borne off at least one piece (1x multiplier)
+ * - gammon: opponent has not borne off any pieces (2x multiplier)
+ * - backgammon: opponent has pieces on bar or in winner's home board (3x multiplier)
+ * @typedef {'single' | 'gammon' | 'backgammon' | null} WinType
+ */
+
+/**
  * Message type indicator
  * @typedef {'error' | 'info' | 'warning'} MessageType
  */
@@ -62,6 +71,7 @@
  * @property {LastMove | null} lastMove - Reference to last applied move, null for initial state
  * @property {GameStatus} status - Current game status
  * @property {PlayerColor | null} winner - Winner of the game, null while playing
+ * @property {WinType} winType - Type of win (single/gammon/backgammon), only populated when status === 'completed'
  * @property {Players} players - Player identity mapping
  * @property {Message[]} messages - System messages and error notifications
  * @property {string} updatedAt - ISO 8601 timestamp of last state update
