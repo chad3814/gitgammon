@@ -16,7 +16,7 @@
 
 7. [x] OAuth Device Flow — Implement authentication using GitHub's Device Flow: request device code, poll for token, store access token locally. Only Client ID needed—no secrets. `M`
 
-8. [ ] Table Initialization — Create system for starting new tables: create `tables/{id}/` directory, initial `state.json`, empty `moves/` directory, assign players, first dice roll for starting player. `S`
+8. [x] Table Initialization — Create system for starting new tables: create `tables/{id}/` directory, initial `state.json`, empty `moves/` directory, assign players, first dice roll for starting player. `S`
 
 9. [ ] State Polling — Implement unauthenticated polling of `state.json` from GitHub Pages URL with cache busting (`?_=${Date.now()}` and `cache: "no-store"`). `S`
 
