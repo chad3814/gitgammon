@@ -47,12 +47,6 @@
     "white": "alice",
     "black": "bob"
   },
-  "messages": [
-    {
-      "type": "error",
-      "text": "Invalid move rejected: wrong turn",
-      "timestamp": "2026-01-23T16:24:44.692Z"
-    }
-  ],
+  "messages": [],
   "updatedAt": "2025-01-21T12:00:00Z"
 }
