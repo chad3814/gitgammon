@@ -6,6 +6,7 @@
 
 import { verifyPlayer } from './verify-player.js';
 import { verifyTurn } from './verify-turn.js';
+import { verifyDice } from './verify-dice.js';
 import { verifyStateHash } from './verify-hash.js';
 import { validateMoveFileSchema } from './validate-move-file.js';
 import { validateGameRules } from './validate-rules.js';
@@ -34,6 +35,12 @@ export async function runValidationPipeline({ actor, state, moveFile, filename }
   const turnResult = verifyTurn(state, moveFile);
   if (!turnResult.valid) {
     allErrors.push(...turnResult.errors);
+  }
+
+  // 2.5. Verify dice match between state and move file
+  const diceResult = verifyDice(state, moveFile);
+  if (!diceResult.valid) {
+    allErrors.push(...diceResult.errors);
   }
 
   // 3. Verify state hash (move is not stale)

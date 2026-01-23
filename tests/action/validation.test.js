@@ -7,6 +7,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { verifyPlayer } from '../../action/verify-player.js';
 import { verifyTurn } from '../../action/verify-turn.js';
+import { verifyDice } from '../../action/verify-dice.js';
 import { verifyStateHash } from '../../action/verify-hash.js';
 import { validateMoveFileSchema } from '../../action/validate-move-file.js';
 import { validateGameRules } from '../../action/validate-rules.js';
@@ -234,6 +235,99 @@ describe('Player Verification and Move Validation', () => {
 
       expect(result.valid).toBe(true);
       expect(result.errors).toEqual([]);
+    });
+
+    it('should reject move when dice mismatch (state [3,5], move [4,6])', async () => {
+      const state = createTestState({ dice: [3, 5] });
+      const expectedHash = computeStateHash(state);
+
+      const moveFile = createTestMoveFile({
+        expectedState: expectedHash,
+        diceRoll: [4, 6],
+        moves: [
+          { from: 5, to: 1, die: 4 },
+          { from: 7, to: 1, die: 6 }
+        ]
+      });
+
+      const result = await runValidationPipeline({
+        actor: 'alice',
+        state,
+        moveFile,
+        filename: '0001-white-a1b2c3.json'
+      });
+
+      expect(result.valid).toBe(false);
+      expect(result.errors.some(e => e.includes('Dice mismatch'))).toBe(true);
+    });
+
+    it('should accept move when dice match in same order', async () => {
+      const state = createTestState({ dice: [3, 5] });
+      const expectedHash = computeStateHash(state);
+
+      const moveFile = createTestMoveFile({
+        expectedState: expectedHash,
+        diceRoll: [3, 5]
+      });
+
+      const result = await runValidationPipeline({
+        actor: 'alice',
+        state,
+        moveFile,
+        filename: '0001-white-a1b2c3.json'
+      });
+
+      expect(result.valid).toBe(true);
+      expect(result.errors).toEqual([]);
+    });
+
+    it('should accept move when dice match in reversed order', async () => {
+      const state = createTestState({ dice: [3, 5] });
+      const expectedHash = computeStateHash(state);
+
+      const moveFile = createTestMoveFile({
+        expectedState: expectedHash,
+        diceRoll: [5, 3],
+        moves: [
+          { from: 7, to: 2, die: 5 },
+          { from: 5, to: 2, die: 3 }
+        ]
+      });
+
+      const result = await runValidationPipeline({
+        actor: 'alice',
+        state,
+        moveFile,
+        filename: '0001-white-a1b2c3.json'
+      });
+
+      expect(result.valid).toBe(true);
+      expect(result.errors).toEqual([]);
+    });
+
+    it('should run dice verification before game rules validation (fail fast)', async () => {
+      const state = createTestState({ dice: [3, 5] });
+      const expectedHash = computeStateHash(state);
+
+      // Move file has mismatched dice AND invalid moves
+      const moveFile = createTestMoveFile({
+        expectedState: expectedHash,
+        diceRoll: [4, 6],
+        moves: [
+          { from: 1, to: 0, die: 4 } // Invalid: no white pieces on point 1
+        ]
+      });
+
+      const result = await runValidationPipeline({
+        actor: 'alice',
+        state,
+        moveFile,
+        filename: '0001-white-a1b2c3.json'
+      });
+
+      expect(result.valid).toBe(false);
+      // Should have dice mismatch error
+      expect(result.errors.some(e => e.includes('Dice mismatch'))).toBe(true);
     });
   });
 });
